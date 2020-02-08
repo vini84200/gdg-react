@@ -1,0 +1,21 @@
+<svg width="400" height="400" xmlns="http://www.w3.org/2000/svg">
+ <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
+ <defs>
+  <filter id="svg_1_blur">
+   <feGaussianBlur stdDeviation="0" in="SourceGraphic"/>
+  </filter>
+ </defs>
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="402" width="402" y="-1" x="-1"/>
+  <g display="none" overflow="visible" y="0" x="0" height="100%" width="100%" id="canvasGrid">
+   <rect fill="url(#gridpattern)" stroke-width="0" y="0" x="0" height="100%" width="100%"/>
+  </g>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <text filter="url(#svg_1_blur)" font-style="normal" font-weight="normal" transform="matrix(7.46097, 0, 0, 7.46097, -623.301, -535.053)" xml:space="preserve" text-anchor="start" font-family="Georgia, Times, 'Times New Roman', serif" font-size="24" id="svg_1" y="102.942778" x="84.355791" stroke-width="0" stroke="#000" fill="#007fff">GDG</text>
+  <path id="svg_2" d="m39.5,69.5" opacity="0.5" stroke-width="0" stroke="#000" fill="#fff"/>
+  <path d="m-25.5,16.5c5,4 24.537589,13.217594 77,23c55.610046,10.369328 134.11438,22.01466 186,26c52.191284,4.00882 90.946503,14.999367 119,16c18.987915,0.677277 37.259369,-1.9217 56,-7c6.104401,-1.65416 7,-2 7,-3l0,0" id="svg_5" stroke-width="0" stroke="#000" fill="none"/>
+ </g>
+</svg>
