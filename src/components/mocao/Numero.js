@@ -1,37 +1,27 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Input, Field, Label, Control, Button } from "rbx";
-
+import { Input, Field, Control, Help } from "rbx";
+import StaticInput from '../StaticInput'
 class Numero extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      selected: true
-    };
   }
+
   onChange(event) {
     this.props.change_num(event.target.value);
   }
-  onClick() {
-    this.setState({
-      selected: true
-    });
-  }
-  onBlur() {
-    this.setState({
-      selected: false
-    });
-  }
+
   render() {
     return (
       <Field kind="addons">
-        <Label>Projeto de Resolução nº </Label>
+        <strong>Projeto de Resolução nº </strong>
         <Control>
-          <Input
+          <StaticInput
+            child={Input}
             textAlign="right"
-            onClick={() => this.onClick()}
-            onBlur={() => this.onBlur()}
-            static={!this.state.selected}
+            style={{
+                width: "60px"
+            }}
             value={this.props.num}
             onChange={(e) =>this.onChange(e)}
           />
@@ -39,6 +29,9 @@ class Numero extends React.Component {
         <Control>
           <Input static value={" / " + this.props.year}></Input>
         </Control>
+        <Help>
+            Obtenha esse número com o secretario.
+        </Help>
       </Field>
     );
   }

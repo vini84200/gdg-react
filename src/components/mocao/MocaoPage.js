@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import {Content} from 'rbx'
+import {Container, Content} from 'rbx'
 import PropTypes from 'prop-types'
 
 import Numero from './Numero'
@@ -21,10 +21,12 @@ class MocaoPage extends Component {
   render() {
     return (
         <Fragment>
-            <Content>
-                <h1>Proposta de Resolução</h1>
-                <Numero num={this.state.num} year={this.state.year} change_num={(num) => this.change_num(num)} />
-            </Content>
+            <Container>
+                <Content>
+                    <h1>Criar uma 'Proposta de Resolução'</h1>
+                    <Numero num={this.state.num} year={this.state.year} change_num={(num) => this.change_num(num)} />
+                </Content>
+            </Container>
         </Fragment>
     );
   }
