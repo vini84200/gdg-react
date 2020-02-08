@@ -3,10 +3,6 @@ import PropTypes from "prop-types";
 import { Input, Field, Control, Help } from "rbx";
 import StaticInput from '../StaticInput'
 class Numero extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   onChange(event) {
     this.props.change_num(event.target.value);
   }
@@ -29,9 +25,6 @@ class Numero extends React.Component {
         <Control>
           <Input static value={" / " + this.props.year}></Input>
         </Control>
-        <Help>
-            Obtenha esse número com o secretario.
-        </Help>
       </Field>
     );
   }

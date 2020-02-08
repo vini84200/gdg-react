@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {Fragment} from 'react'
 import PropTypes from 'prop-types'
 
 class StaticInput extends React.Component {
@@ -12,12 +12,12 @@ class StaticInput extends React.Component {
       this.props.onChange(event);
     }
     onClick() {
-      this.setState({
-        selected: true
-      });
-      if (this.props.onClick){
-          this.props.onClick();
-      }
+        this.setState({
+            selected: true
+        });
+        if (this.props.onClick){
+            this.props.onClick()
+        }
     }
     onBlur() {
       this.setState({
@@ -29,6 +29,7 @@ class StaticInput extends React.Component {
     }
     render () {
         return (
+            <Fragment>
           <this.props.child
             onClick={() => this.onClick()}
             onBlur={() => this.onBlur()}
@@ -37,6 +38,8 @@ class StaticInput extends React.Component {
             onChange={(e) =>this.onChange(e)}
             {...this.props}
         />
+        {this.state.selected}
+        </Fragment>
         );
     }
 }
