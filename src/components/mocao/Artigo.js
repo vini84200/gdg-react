@@ -8,8 +8,8 @@ import { Input, Field, Control, Label, Help, Column } from "rbx";
 class Artigo extends React.Component {
   static propsTypes = {
     key: PropTypes.number,
-    phantom: PropTypes.bool,
     artigo: PropTypes.shape({
+      phantom: PropTypes.bool,
       number: PropTypes.number,
       text: PropTypes.string,
       paragrafos: PropTypes.array,
@@ -18,7 +18,7 @@ class Artigo extends React.Component {
   };
 
   getCalling() {
-    if (this.props.phantom) {
+    if (this.props.artigo.phantom) {
       return "New Art.";
     }
     if (this.props.artigo.number > 9) {
@@ -56,7 +56,7 @@ class Artigo extends React.Component {
                 child={Input}
                 value={this.props.artigo ? this.props.artigo.text : ""}
                 onChange={e => this.handleTextChange(e)}
-                onClick={()=> this.handleClick()}
+                onClick={() => this.handleClick()}
               />
             </Field>
           </Column>

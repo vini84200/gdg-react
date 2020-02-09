@@ -38,16 +38,23 @@ class MocaoPage extends Component {
   add_artigo(artigo) {
     const artigos = [...this.state.corpo];
     artigos.push({
-        number: this.state.corpo[this.state.corpo.length-1].number + 1,
-    })
+      number: this.state.corpo[this.state.corpo.length - 1].number + 1
+    });
     this.setState({
       corpo: artigos
     });
+
+    console.log("Added artigo");
   }
 
   change_artigo(artigo, id) {
     const artigos = [...this.state.corpo];
     artigos[id] = artigo;
+    if (artigos[id].phantom) {
+      artigos[id].phantom = false;
+      artigos[id].number =
+        this.state.corpo[this.state.corpo.length - 1].number + 1;
+    }
     this.setState({
       corpo: artigos
     });
@@ -72,7 +79,9 @@ class MocaoPage extends Component {
             <Corpo
               corpo={this.state.corpo}
               change_artigo={(artigo, id) => this.change_artigo(artigo, id)}
-              add_artigo={()=>{this.add_artigo()}}
+              add_artigo={() => {
+                this.add_artigo();
+              }}
             />
           </Content>
         </Container>

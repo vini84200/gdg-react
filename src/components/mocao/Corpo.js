@@ -11,22 +11,19 @@ class Corpo extends React.Component {
     this.props.add_artigo();
   }
   render() {
+    const artigos = [...this.props.corpo, { phantom: true }];
     return (
       <Fragment>
-        {this.props.corpo.map((artigo, id) => (
+        {artigos.map((artigo, id) => (
           <Artigo
             key={id}
             artigo={artigo}
             onChange={artigo => this.change_artigo(artigo, id)}
+            new={() => {
+              this.add_artigo();
+            }}
           />
         ))}
-        <Artigo
-          phantom
-          key={this.props.corpo.length}
-          new={() => {
-            this.add_artigo();
-          }}
-        />
       </Fragment>
     );
   }
