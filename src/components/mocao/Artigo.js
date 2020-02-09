@@ -19,7 +19,7 @@ class Artigo extends React.Component {
 
   getCalling() {
     if (this.props.artigo.phantom) {
-      return "New Art.";
+      return " ";
     }
     if (this.props.artigo.number > 9) {
       return "Art. " + this.props.artigo.number;
@@ -57,6 +57,7 @@ class Artigo extends React.Component {
                 value={this.props.artigo ? this.props.artigo.text : ""}
                 onChange={e => this.handleTextChange(e)}
                 onClick={() => this.handleClick()}
+                placeholder="Clique aqui para adicionar um novo artigo."
               />
             </Field>
           </Column>

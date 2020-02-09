@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import { Container, Content } from "rbx";
+import { Container, Content, Message } from "rbx";
 import PropTypes from "prop-types";
 
 import Numero from "./Numero";
@@ -13,13 +13,7 @@ class MocaoPage extends Component {
       num: undefined,
       year: 2020,
       ementa: "",
-      corpo: [
-        {
-          id: 0,
-          number: 1,
-          text: "This is a article"
-        }
-      ]
+      corpo: []
     };
   }
 
@@ -52,8 +46,12 @@ class MocaoPage extends Component {
     artigos[id] = artigo;
     if (artigos[id].phantom) {
       artigos[id].phantom = false;
-      artigos[id].number =
-        this.state.corpo[this.state.corpo.length - 1].number + 1;
+      let anterior = 0;
+      if (this.state.corpo.length) {
+        anterior = this.state.corpo[this.state.corpo.length - 1].number;
+      }
+
+      artigos[id].number = anterior + 1;
     }
     this.setState({
       corpo: artigos
@@ -84,6 +82,7 @@ class MocaoPage extends Component {
               }}
             />
           </Content>
+          <Message>{JSON.stringify({ ...this.state })}</Message>
         </Container>
       </Fragment>
     );
