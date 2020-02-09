@@ -1,13 +1,21 @@
-import React from 'react';
+import React from "react";
 import "rbx/index.css";
-import Header from './components/Header'
-import MocaoPage from './components/mocao/MocaoPage'
+import Header from "./components/Header";
+import MocaoPage from "./components/mocao/MocaoPage";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { fab } from "@fortawesome/free-brands-svg-icons";
+import {
+  faCheckSquare,
+  faCoffee,
+  faPlus
+} from "@fortawesome/free-solid-svg-icons";
 
+library.add(fab, faCheckSquare, faCoffee, faPlus);
 function App() {
   return (
     <div className="App">
-        <Header />
-        <MocaoPage />
+      <Header />
+      <MocaoPage />
     </div>
   );
 }

@@ -13,7 +13,16 @@ class MocaoPage extends Component {
       num: undefined,
       year: 2020,
       ementa: "",
-      corpo: []
+      corpo: [
+        {
+          number: 1,
+          text: "São coisas possiveis:",
+          items: [
+            { number: 1, text: "Que as pessoas gostem desse site." },
+            { number: 2, text: "Que as pessoas odeiem esse site." }
+          ]
+        }
+      ]
     };
   }
 
