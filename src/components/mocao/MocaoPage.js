@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from "react";
-import { Container, Content, Message } from "rbx";
+import { Container, Content, Message, Button, Icon } from "rbx";
 import PropTypes from "prop-types";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import MakePDF from './MakePDF'
 
 import Numero from "./Numero";
 import Ementa from "./Ementa";
@@ -67,12 +69,31 @@ class MocaoPage extends Component {
     });
   }
 
+  exportar_pdf(){
+      MakePDF()
+  }
+
   render() {
     return (
       <Fragment>
         <Container>
           <Content>
             <h1>Criar uma 'Proposta de Resolução'</h1>
+
+            <Button.Group>
+                <Button
+                  color="info"
+                  onClick={() => {
+                      this.exportar_pdf()
+                  }}
+                >
+                  <Icon size="small">
+                    <FontAwesomeIcon icon="file-pdf" />
+                  </Icon>
+                  <span>Exportar PDF</span>
+                </Button>
+            </Button.Group>
+
             <Numero
               num={this.state.num}
               year={this.state.year}

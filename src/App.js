@@ -7,10 +7,11 @@ import { fab } from "@fortawesome/free-brands-svg-icons";
 import {
   faCheckSquare,
   faCoffee,
-  faPlus
+  faPlus,
+  faFilePdf
 } from "@fortawesome/free-solid-svg-icons";
 
-library.add(fab, faCheckSquare, faCoffee, faPlus);
+library.add(fab, faCheckSquare, faCoffee, faPlus, faFilePdf);
 function App() {
   return (
     <div className="App">
