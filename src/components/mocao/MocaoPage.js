@@ -70,7 +70,7 @@ class MocaoPage extends Component {
   }
 
   exportar_pdf() {
-    MakePDF();
+    MakePDF(this.state);
   }
 
   render() {

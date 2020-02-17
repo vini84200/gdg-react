@@ -27,7 +27,7 @@ const getBase64ImageFromURL = (url) => {
   });
 }
 
-export default async () => {
+export default async (resolucao) => {
   const { vfs } = vfsFonts.pdfMake;
   pdfMake.vfs = vfs;
   const documentDefinition = {
@@ -64,9 +64,10 @@ export default async () => {
         ]
     },
     content: [
-        { text: 'PROJETO DE RESOLUÇÃO Nº 00, DE 2020', bold: true, alignment: 'center' },
-        { text: 'Esta é a ementa em teste. Dispõe das os d asfspõe s os d asspõe das os d asspõe das os d asspõe das d asspõe das os d asspõe das os d asspõe das osasspõe das os d asspõe das os d asspõe das os d asspõe das os d as.', alignment: 'justify', margin: [230,0,0,30] },
-        {text: 'O Grêmio Estudantil Vinicius de Moraes resolve:',},
+        { text: `PROJETO DE RESOLUÇÃO Nº ${resolucao.num}, DE ${resolucao.year}`, bold: true, alignment: 'center' },
+        { text: resolucao.ementa, alignment: 'justify', margin: [230,0,0,30] },
+        {text: 'O Grêmio Estudantil Vinicius de Moraes resolve:'},
+
     ],
     defaultStyle: {
         alignment: 'justify'
