@@ -27,6 +27,47 @@ const getBase64ImageFromURL = url => {
     });
 };
 
+function romanize(num) {
+    if (isNaN(num)) return NaN;
+    var digits = String(+num).split(''),
+        key = [
+            '',
+            'C',
+            'CC',
+            'CCC',
+            'CD',
+            'D',
+            'DC',
+            'DCC',
+            'DCCC',
+            'CM',
+            '',
+            'X',
+            'XX',
+            'XXX',
+            'XL',
+            'L',
+            'LX',
+            'LXX',
+            'LXXX',
+            'XC',
+            '',
+            'I',
+            'II',
+            'III',
+            'IV',
+            'V',
+            'VI',
+            'VII',
+            'VIII',
+            'IX',
+        ],
+        roman = '',
+        i = 3;
+    while (i--) roman = (key[+digits.pop() + i * 10] || '') + roman;
+    return Array(+digits.join('') + 1).join('M') + roman;
+}
+
 const getCallingArtigo = num => {
     if (num > 9) {
         return 'Art. ' + num;
@@ -35,12 +76,37 @@ const getCallingArtigo = num => {
     }
 };
 
-const renderArtigo = artigo => {
-    return {
-        text: getCallingArtigo(artigo.number) + '\t\t' + artigo.text,
-        margin: [0, 10],
-    };
+const getCallingItem = num => {
+    return romanize(num) + "."
 };
+
+const renderArtigo = artigo => {
+    return [
+        {text: getCallingArtigo(artigo.number), bold: true},
+		[artigo.text, renderItems(artigo.items) ]
+    ];
+};
+
+const renderItem = item => {
+    return [
+        {text: getCallingItem(item.number), bold: true},
+		[item.text, ]
+    ];
+};
+
+const renderItems = items => {
+	if (items){
+		return {
+			layout: 'noBorders',
+			table: {
+				widths: [15, '*'],
+				margins: [0, 50],
+				body: items.map(item => renderItem(item))
+			}
+		}
+	}
+	return;
+}
 
 export default async resolucao => {
     const { vfs } = vfsFonts.pdfMake;
@@ -48,7 +114,7 @@ export default async resolucao => {
     const documentDefinition = {
         pageSize: 'A4',
         // [left, top, right, bottom] or [horizontal, vertical] or just a number for equal margins
-        pageMargins: [40, 200, 40, 60],
+        pageMargins: [60, 200, 60, 60],
         header: {
             margin: [40, 10, 40, 0],
             stack: [
@@ -89,9 +155,12 @@ export default async resolucao => {
                 alignment: 'justify',
                 margin: [300, 0, 0, 30],
             },
-            { text: 'O Grêmio Estudantil Vinicius de Moraes resolve:' },
+            { text: 'O Grêmio Estudantil Vinícius de Moraes resolve:' },
             {
+				layout: 'noBorders',
                 table: {
+					widths: [35, '*'],
+					margins: [0, 50],
                     body: resolucao.corpo.map(artigo => renderArtigo(artigo)),
                 },
                 margin: [20, 30, 0, 0],
