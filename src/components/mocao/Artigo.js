@@ -1,9 +1,9 @@
-import React, { Fragment } from "react";
-import PropTypes from "prop-types";
-import Item from "./Item";
-import StaticInput from "../StaticInput";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Input, Field, Control, Label, Help, Column, Button, Icon } from "rbx";
+import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
+import Item from './Item';
+import StaticInput from '../StaticInput';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Input, Field, Control, Label, Help, Column, Button, Icon } from 'rbx';
 
 class Artigo extends React.Component {
   static propsTypes = {
@@ -13,18 +13,18 @@ class Artigo extends React.Component {
       number: PropTypes.number,
       text: PropTypes.string,
       paragrafos: PropTypes.array,
-      items: PropTypes.array
-    })
+      items: PropTypes.array,
+    }),
   };
 
   getCalling() {
     if (this.props.artigo.phantom) {
-      return " ";
+      return ' ';
     }
     if (this.props.artigo.number > 9) {
-      return "Art. " + this.props.artigo.number;
+      return 'Art. ' + this.props.artigo.number;
     } else {
-      return "Art. " + this.props.artigo.number + "°";
+      return 'Art. ' + this.props.artigo.number + '°';
     }
   }
 
@@ -38,7 +38,7 @@ class Artigo extends React.Component {
     if (this.props.onChange) {
       this.props.onChange({
         ...this.props.artigo,
-        text: e.target.value
+        text: e.target.value,
       });
     }
   }
@@ -59,14 +59,14 @@ class Artigo extends React.Component {
 
     this.props.onChange({
       ...this.props.artigo,
-      items: items
+      items: items,
     });
   }
 
   add_item() {
     const id = 0;
     const items = [];
-    items[id] = { text: "", phantom: "true" };
+    items[id] = { text: '', phantom: 'true' };
     if (items[id].phantom) {
       items[id].phantom = false;
       let anterior = 0;
@@ -80,7 +80,7 @@ class Artigo extends React.Component {
 
     this.props.onChange({
       ...this.props.artigo,
-      items: items
+      items: items,
     });
   }
 
@@ -100,7 +100,7 @@ class Artigo extends React.Component {
             <Field>
               <StaticInput
                 child={Input}
-                value={this.props.artigo ? this.props.artigo.text : ""}
+                value={this.props.artigo ? this.props.artigo.text : ''}
                 onChange={e => this.handleTextChange(e)}
                 onClick={() => this.handleClick()}
                 placeholder="Clique aqui para adicionar um novo artigo."

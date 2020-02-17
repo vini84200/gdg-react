@@ -1,12 +1,12 @@
-import React, { Component, Fragment } from "react";
-import { Container, Content, Message, Button, Icon } from "rbx";
-import PropTypes from "prop-types";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import MakePDF from './MakePDF'
+import React, { Component, Fragment } from 'react';
+import { Container, Content, Message, Button, Icon } from 'rbx';
+import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import MakePDF from './MakePDF';
 
-import Numero from "./Numero";
-import Ementa from "./Ementa";
-import Corpo from "./Corpo";
+import Numero from './Numero';
+import Ementa from './Ementa';
+import Corpo from './Corpo';
 
 class MocaoPage extends Component {
   constructor(props) {
@@ -14,42 +14,42 @@ class MocaoPage extends Component {
     this.state = {
       num: undefined,
       year: 2020,
-      ementa: "",
+      ementa: '',
       corpo: [
         {
           number: 1,
-          text: "São coisas possiveis:",
+          text: 'São coisas possiveis:',
           items: [
-            { number: 1, text: "Que as pessoas gostem desse site." },
-            { number: 2, text: "Que as pessoas odeiem esse site." }
-          ]
-        }
-      ]
+            { number: 1, text: 'Que as pessoas gostem desse site.' },
+            { number: 2, text: 'Que as pessoas odeiem esse site.' },
+          ],
+        },
+      ],
     };
   }
 
   change_num(num) {
     this.setState({
-      num: num
+      num: num,
     });
   }
 
   change_ementa(text) {
     this.setState({
-      ementa: text
+      ementa: text,
     });
   }
 
   add_artigo(artigo) {
     const artigos = [...this.state.corpo];
     artigos.push({
-      number: this.state.corpo[this.state.corpo.length - 1].number + 1
+      number: this.state.corpo[this.state.corpo.length - 1].number + 1,
     });
     this.setState({
-      corpo: artigos
+      corpo: artigos,
     });
 
-    console.log("Added artigo");
+    console.log('Added artigo');
   }
 
   change_artigo(artigo, id) {
@@ -65,12 +65,12 @@ class MocaoPage extends Component {
       artigos[id].number = anterior + 1;
     }
     this.setState({
-      corpo: artigos
+      corpo: artigos,
     });
   }
 
-  exportar_pdf(){
-      MakePDF()
+  exportar_pdf() {
+    MakePDF();
   }
 
   render() {
@@ -81,17 +81,17 @@ class MocaoPage extends Component {
             <h1>Criar uma 'Proposta de Resolução'</h1>
 
             <Button.Group>
-                <Button
-                  color="info"
-                  onClick={() => {
-                      this.exportar_pdf()
-                  }}
-                >
-                  <Icon size="small">
-                    <FontAwesomeIcon icon="file-pdf" />
-                  </Icon>
-                  <span>Exportar PDF</span>
-                </Button>
+              <Button
+                color="info"
+                onClick={() => {
+                  this.exportar_pdf();
+                }}
+              >
+                <Icon size="small">
+                  <FontAwesomeIcon icon="file-pdf" />
+                </Icon>
+                <span>Exportar PDF</span>
+              </Button>
             </Button.Group>
 
             <Numero

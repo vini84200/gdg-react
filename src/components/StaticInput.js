@@ -1,11 +1,11 @@
-import React, { Fragment } from "react";
-import PropTypes from "prop-types";
+import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 
 class StaticInput extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selected: false
+      selected: false,
     };
   }
   onChange(event) {
@@ -13,7 +13,7 @@ class StaticInput extends React.Component {
   }
   onClick() {
     this.setState({
-      selected: true
+      selected: true,
     });
     if (this.props.onClick) {
       this.props.onClick();
@@ -21,7 +21,7 @@ class StaticInput extends React.Component {
   }
   onBlur() {
     this.setState({
-      selected: false
+      selected: false,
     });
     if (this.props.onBlur) {
       this.props.onBlur();

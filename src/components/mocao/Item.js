@@ -1,47 +1,47 @@
-import React, { Fragment } from "react";
-import PropTypes from "prop-types";
-import { Input, Field, Control, Label, Help, Column } from "rbx";
-import StaticInput from "../StaticInput";
+import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
+import { Input, Field, Control, Label, Help, Column } from 'rbx';
+import StaticInput from '../StaticInput';
 
 function romanize(num) {
   if (isNaN(num)) return NaN;
-  var digits = String(+num).split(""),
+  var digits = String(+num).split(''),
     key = [
-      "",
-      "C",
-      "CC",
-      "CCC",
-      "CD",
-      "D",
-      "DC",
-      "DCC",
-      "DCCC",
-      "CM",
-      "",
-      "X",
-      "XX",
-      "XXX",
-      "XL",
-      "L",
-      "LX",
-      "LXX",
-      "LXXX",
-      "XC",
-      "",
-      "I",
-      "II",
-      "III",
-      "IV",
-      "V",
-      "VI",
-      "VII",
-      "VIII",
-      "IX"
+      '',
+      'C',
+      'CC',
+      'CCC',
+      'CD',
+      'D',
+      'DC',
+      'DCC',
+      'DCCC',
+      'CM',
+      '',
+      'X',
+      'XX',
+      'XXX',
+      'XL',
+      'L',
+      'LX',
+      'LXX',
+      'LXXX',
+      'XC',
+      '',
+      'I',
+      'II',
+      'III',
+      'IV',
+      'V',
+      'VI',
+      'VII',
+      'VIII',
+      'IX',
     ],
-    roman = "",
+    roman = '',
     i = 3;
-  while (i--) roman = (key[+digits.pop() + i * 10] || "") + roman;
-  return Array(+digits.join("") + 1).join("M") + roman;
+  while (i--) roman = (key[+digits.pop() + i * 10] || '') + roman;
+  return Array(+digits.join('') + 1).join('M') + roman;
 }
 
 class Item extends React.Component {
@@ -50,15 +50,15 @@ class Item extends React.Component {
     item: PropTypes.shape({
       phantom: PropTypes.bool,
       number: PropTypes.number,
-      text: PropTypes.string
-    })
+      text: PropTypes.string,
+    }),
   };
 
   getCalling() {
     if (this.props.item.phantom) {
-      return " ";
+      return ' ';
     }
-    return romanize(this.props.item.number) + ". ";
+    return romanize(this.props.item.number) + '. ';
   }
 
   handleClick(e) {
@@ -71,7 +71,7 @@ class Item extends React.Component {
     if (this.props.onChange) {
       this.props.onChange({
         ...this.props.item,
-        text: e.target.value
+        text: e.target.value,
       });
     }
   }
@@ -87,7 +87,7 @@ class Item extends React.Component {
             <Field>
               <StaticInput
                 child={Input}
-                value={this.props.item ? this.props.item.text : ""}
+                value={this.props.item ? this.props.item.text : ''}
                 onChange={e => this.handleTextChange(e)}
                 onClick={() => this.handleClick()}
                 placeholder="Clique aqui para adicionar um item."

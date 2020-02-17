@@ -1,6 +1,6 @@
-import React, { Fragment } from "react";
-import PropTypes from "prop-types";
-import Artigo from "./Artigo";
+import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
+import Artigo from './Artigo';
 
 class Corpo extends React.Component {
   change_artigo(artigo, id) {

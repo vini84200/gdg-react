@@ -1,9 +1,9 @@
-import React, { Fragment } from "react";
-import PropTypes from "prop-types";
-import { Column } from "rbx";
-import StaticInput from "../StaticInput";
+import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
+import { Column } from 'rbx';
+import StaticInput from '../StaticInput';
 
-import { Input, Field, Control, Label, Help } from "rbx";
+import { Input, Field, Control, Label, Help } from 'rbx';
 
 class Ementa extends React.Component {
   onChange(event) {
@@ -20,7 +20,7 @@ class Ementa extends React.Component {
             as="Textarea"
             placeholder="Clique aqui para digitar sua ementa. PS: Uma ementa é um resumo da resolução."
             style={{
-              height: "100px"
+              height: '100px',
             }}
           />
         </Field>
