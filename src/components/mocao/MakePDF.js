@@ -151,9 +151,10 @@ export default async resolucao => {
                 alignment: 'center',
             },
             {
-                text: resolucao.ementa,
+                text: "\t\t" + resolucao.ementa.replace("\n", "\n\t\t"),
                 alignment: 'justify',
-                margin: [300, 0, 0, 30],
+                margin: [250, 30, 0, 30],
+				preserveLeadingSpaces: true
             },
             { text: 'O Grêmio Estudantil Vinícius de Moraes resolve:' },
             {
