@@ -5,6 +5,16 @@ import StaticInput from '../StaticInput';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Input, Field, Control, Label, Help, Column, Button, Icon } from 'rbx';
 
+import {renderItemPDF}  from './Item'
+
+const getCalling = (num) => {
+  if (num) {
+      return 'Art. ' + num;
+  } else {
+      return 'Art. ' + num + '°';
+  }
+}
+
 class Artigo extends React.Component {
     static propsTypes = {
         key: PropTypes.number,
@@ -21,11 +31,7 @@ class Artigo extends React.Component {
         if (this.props.artigo.phantom) {
             return ' ';
         }
-        if (this.props.artigo.number > 9) {
-            return 'Art. ' + this.props.artigo.number;
-        } else {
-            return 'Art. ' + this.props.artigo.number + '°';
-        }
+        return getCalling(this.props.artigo.number)
     }
 
     handleClick(e) {
@@ -144,3 +150,24 @@ class Artigo extends React.Component {
 }
 
 export default Artigo;
+
+export const renderArtigoPDF = artigo => {
+    return [
+        {text: getCalling(artigo.number), bold: true},
+		[artigo.text, renderItems(artigo.items) ]
+    ];
+};
+
+const renderItems = items => {
+	if (items){
+		return {
+			layout: 'noBorders',
+			table: {
+				widths: [15, '*'],
+				margins: [0, 50],
+				body: items.map(item => renderItemPDF(item))
+			}
+		}
+	}
+	return;
+}

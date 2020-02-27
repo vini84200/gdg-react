@@ -4,6 +4,9 @@ import { Input, Field, Control, Label, Help, Column } from 'rbx';
 import StaticInput from '../StaticInput';
 import {romanize} from './utils'
 
+const getCalling = (num) => {
+  return romanize(num) + '. ';
+}
 
 class Item extends React.Component {
     static propsTypes = {
@@ -19,7 +22,7 @@ class Item extends React.Component {
         if (this.props.item.phantom) {
             return ' ';
         }
-        return romanize(this.props.item.number) + '. ';
+        return getCalling(this.props.item.number)
     }
 
     handleClick(e) {
@@ -64,3 +67,11 @@ class Item extends React.Component {
 }
 
 export default Item;
+
+
+export const renderItemPDF = item => {
+    return [
+        {text: getCalling(item.number), bold: true},
+		[item.text, ]
+    ];
+};
