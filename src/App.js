@@ -9,9 +9,11 @@ import {
     faCoffee,
     faPlus,
     faFilePdf,
+    faFileExport,
+    faFileUpload
 } from '@fortawesome/free-solid-svg-icons';
 
-library.add(fab, faCheckSquare, faCoffee, faPlus, faFilePdf);
+library.add(fab, faCheckSquare, faCoffee, faPlus, faFilePdf,faFileExport,faFileUpload);
 function App() {
     return (
         <div className="App">

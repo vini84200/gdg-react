@@ -95,6 +95,26 @@ class MocaoPage extends Component {
                                 </Icon>
                                 <span>Exportar PDF</span>
                             </Button>
+                            <Button
+                                color="info"
+                                onClick={() => {
+                                }}
+                            >
+                                <Icon size="small">
+                                    <FontAwesomeIcon icon="file-export" />
+                                </Icon>
+                                <span>Exportar JSON</span>
+                            </Button>
+                            <Button
+                                color="info"
+                                onClick={() => {
+                                }}
+                            >
+                                <Icon size="small">
+                                    <FontAwesomeIcon icon="file-upload" />
+                                </Icon>
+                                <span>Importar JSON</span>
+                            </Button>
                         </Button.Group>
 
                         <Numero
