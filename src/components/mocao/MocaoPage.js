@@ -111,7 +111,7 @@ class MocaoPage extends Component {
                             <Button
                                 color="info"
                                 onClick={() => {
-                                  downloadJSON(this.exportar_dados(), `proposta-mocao-${this.state.num}.json`)
+                                  downloadJSON(this.exportar_dados(), `proposta mocao ${this.state.num} de ${this.state.year}.json`)
                                 }}
                             >
                                 <Icon size="small">
