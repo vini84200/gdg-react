@@ -3,6 +3,7 @@ import { Container, Content, Message, Button, Icon } from 'rbx';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import MakePDF from './MakePDF';
+import {downloadJSON} from './utils'
 
 import Numero from './Numero';
 import Ementa from './Ementa';
@@ -28,6 +29,9 @@ class MocaoPage extends Component {
                     ],
                 },
             ],
+            data: {},
+            assinaturas: [],
+
         };
     }
 
@@ -76,6 +80,14 @@ class MocaoPage extends Component {
         MakePDF(this.state);
     }
 
+    exportar_dados() {
+      return {
+        app: 'gdg-gremio',
+        type: 'resulucao',
+        ...this.state,
+      }
+    }
+
     render() {
         return (
             <Fragment>
@@ -98,6 +110,7 @@ class MocaoPage extends Component {
                             <Button
                                 color="info"
                                 onClick={() => {
+                                  downloadJSON(this.exportar_dados(), `proposta-mocao-${this.state.num}.json`)
                                 }}
                             >
                                 <Icon size="small">
