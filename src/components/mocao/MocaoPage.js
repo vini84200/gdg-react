@@ -84,6 +84,7 @@ class MocaoPage extends Component {
       return {
         app: 'gdg-gremio',
         type: 'resulucao',
+        api_version: '0.1',
         ...this.state,
       }
     }
