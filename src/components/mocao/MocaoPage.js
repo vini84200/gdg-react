@@ -118,7 +118,6 @@ class MocaoPage extends Component {
             return;
         }
       }
-      console.log(this)
       this.setState({
         ...data,
         app: undefined,

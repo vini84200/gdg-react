@@ -36,6 +36,12 @@ export const makeDefaultDD = async () => {
               },
           ],
       },
+      footer: function(currentPage, pageCount) {
+        if (pageCount == 1){
+          return "";
+        }
+        return {text: `PÁGINA ${currentPage} DE ${pageCount}`, alignment: 'right', margin: [60, 0, 60, 20]}
+      },
       defaultStyle: {
           alignment: 'justify',
       },
