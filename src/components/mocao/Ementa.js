@@ -6,6 +6,7 @@ import StaticInput from '../StaticInput';
 import { Input, Field, Control, Label, Help } from 'rbx';
 
 class Ementa extends React.Component {
+
     onChange(event) {
         this.props.change_ementa(event.target.value);
     }

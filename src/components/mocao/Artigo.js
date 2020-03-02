@@ -24,12 +24,16 @@ class Artigo extends React.Component {
             text: PropTypes.string,
             paragrafos: PropTypes.array,
             items: PropTypes.array,
+            calling: PropTypes.string
         }),
     };
 
     getCalling() {
         if (this.props.artigo.phantom) {
             return ' ';
+        }
+        if (this.props.artigo.calling){
+          return this.props.artigo.calling
         }
         return getCalling(this.props.artigo.number)
     }

@@ -4,11 +4,31 @@ import { renderArtigoPDF } from './Artigo'
 import { renderAssinaturaPDF} from '../documento/Assinatura'
 import { renderDataPDF} from '../documento/Data'
 
+const getTitle = (num, year, type) => {
+    if (type === 'proposta')
+      return `PROJETO DE RESOLUÇÃO Nº ${num}, DE ${year}`
+
+    if (type === 'resolucao')
+      return `RESOLUÇÃO Nº ${num}, DE ${year}`
+
+    if (type === 'proposta_emenda')
+      return `PROJETO DE EMENDA EM RESOLUÇÃO Nº ${num}, DE ${year}`
+
+    if (type === 'emenda')
+      return `EMENDA EM RESOLUÇÃO Nº ${num}, DE ${year}`
+
+    if (type === 'projeto_emenda_estatuto')
+      return `PROJETO DE EMENDA AO ESTATUTO DO GRÊMIO Nº ${num}, DE ${year}`
+
+    if (type === 'projeto_emenda_estatuto')
+      return `EMENDA AO ESTATUTO DO GRÊMIO Nº ${num}, DE ${year}`
+}
+
 export default async resolucao => {
     const documentDefinition = {
         content: [
             {
-                text: `PROJETO DE RESOLUÇÃO Nº ${resolucao.num}, DE ${resolucao.year}`,
+                text: getTitle(resolucao.num, resolucao.year, resolucao.typeResolucao),
                 bold: true,
                 alignment: 'center',
             },

@@ -20,6 +20,7 @@ class MocaoPage extends Component {
         this.state = {
             num: undefined,
             year: (new Date()).getFullYear(),
+            typeResolucao: 'proposta',
             ementa: '',
             corpo: [
                 {
@@ -144,7 +145,7 @@ class MocaoPage extends Component {
             <Fragment>
                 <Container>
                     <Content>
-                        <h1>Criar uma 'Proposta de Resolução'</h1>
+                        <h1>Criar uma Resolução</h1>
 
                         <Button.Group>
                             <Button
@@ -193,6 +194,7 @@ class MocaoPage extends Component {
                         <Numero
                             num={this.state.num}
                             year={this.state.year}
+                            type={this.state.typeResolucao}
                             change_num={num => this.change_num(num)}
                             change_year={year => this.setState({year:year, saved:false})}
                         />
