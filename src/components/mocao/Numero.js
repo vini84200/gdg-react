@@ -19,7 +19,7 @@ const getTitle = (type) => {
     if (type === 'projeto_emenda_estatuto')
       return `PROJETO DE EMENDA AO ESTATUTO DO GRÊMIO Nº `
 
-    if (type === 'projeto_emenda_estatuto')
+    if (type === 'emenda_estatuto')
       return `EMENDA AO ESTATUTO DO GRÊMIO Nº `
 }
 

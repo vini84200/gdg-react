@@ -20,7 +20,7 @@ const getTitle = (num, year, type) => {
     if (type === 'projeto_emenda_estatuto')
       return `PROJETO DE EMENDA AO ESTATUTO DO GRÊMIO Nº ${num}, DE ${year}`
 
-    if (type === 'projeto_emenda_estatuto')
+    if (type === 'emenda_estatuto')
       return `EMENDA AO ESTATUTO DO GRÊMIO Nº ${num}, DE ${year}`
 }
 
@@ -35,21 +35,21 @@ export default async resolucao => {
             {
                 text: "\t\t" + resolucao.ementa.replace("\n", "\n\t\t"),
                 alignment: 'justify',
-                margin: [250, 30, 0, 30],
+                margin: [250, 10, 0, 10],
 				preserveLeadingSpaces: true
             },
-            { text: 'O Grêmio Estudantil Vinícius de Moraes resolve:' },
+            { text: resolucao.chamada || 'O Grêmio Estudantil Vinícius de Moraes resolve:' },
             {
 				layout: 'noBorders',
                 table: {
-					widths: [35, '*'],
+					widths: [45, '*'],
 					margins: [0, 50],
                     body: resolucao.corpo.map(artigo => renderArtigoPDF(artigo)),
                 },
                 margin: [20, 30, 0, 0],
             },
             renderDataPDF(resolucao.data),
-            renderAssinaturaPDF(resolucao.assinatura, 'Proponente')
+            renderAssinaturaPDF(resolucao.assinatura, resolucao.assinante || 'Proponente')
         ]
     };
     makeAndOpenDocument(documentDefinition);

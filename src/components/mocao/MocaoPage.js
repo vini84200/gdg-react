@@ -214,7 +214,7 @@ class MocaoPage extends Component {
                         />
                         <Data data = {this.state.data} onChangeData={()=>{}} />
 
-                        <Assinatura assinatura={this.state.assinatura} extra="Proponente" onChange={(ass)=>{this.setState({assinatura: ass})}} />
+                        <Assinatura assinatura={this.state.assinatura} extra={this.state.assinante || 'Proponente'} onChange={(ass)=>{this.setState({assinatura: ass})}} />
 
                     </Content>
                     <Message>{JSON.stringify({ ...this.state })}</Message>

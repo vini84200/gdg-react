@@ -157,7 +157,7 @@ export default Artigo;
 
 export const renderArtigoPDF = artigo => {
     return [
-        {text: getCalling(artigo.number), bold: true},
+        {text: artigo.calling || getCalling(artigo.number), bold: true},
 		[artigo.text, renderItems(artigo.items) ]
     ];
 };
@@ -167,7 +167,7 @@ const renderItems = items => {
 		return {
 			layout: 'noBorders',
 			table: {
-				widths: [15, '*'],
+				widths: [35, '*'],
 				margins: [0, 50],
 				body: items.map(item => renderItemPDF(item))
 			}

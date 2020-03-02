@@ -44,6 +44,7 @@ export const makeDefaultDD = async () => {
       },
       defaultStyle: {
           alignment: 'justify',
+          fontSize: 11,
       },
   };
 

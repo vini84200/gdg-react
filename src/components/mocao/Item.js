@@ -15,6 +15,7 @@ class Item extends React.Component {
             phantom: PropTypes.bool,
             number: PropTypes.number,
             text: PropTypes.string,
+            calling: PropTypes.string,
         }),
     };
 
@@ -22,6 +23,8 @@ class Item extends React.Component {
         if (this.props.item.phantom) {
             return ' ';
         }
+        if (this.props.item.calling)
+            return this.props.item.calling;
         return getCalling(this.props.item.number)
     }
 
@@ -71,7 +74,7 @@ export default Item;
 
 export const renderItemPDF = item => {
     return [
-        {text: getCalling(item.number), bold: true},
+        {text: item.calling || getCalling(item.number), bold: true},
 		[item.text, ]
     ];
 };
