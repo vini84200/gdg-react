@@ -111,11 +111,12 @@ class MocaoPage extends Component {
       }
       if (data.api_version !== API_VERSION)
       {
-        alert("Erro! Esse arquivo é de uma versão diferente da API do app! Envie o arquivo para o secretario e ele será atualizado. Desculpe!")
+        alert("Atenção! Esse arquivo é de uma versão diferente da API do app! Ele será aberto, mas podem haver problemas")
       }
       if (data.type !== 'resulucao')
       {
-        alert("Erro! Esse arquivo não é uma proposta de Resolução ou uma Resolução. Ele");
+        alert("Erro! Esse arquivo não é uma proposta de Resolução ou uma Resolução. Ele é um(a) " + data.type);
+        return;
       }
       if (!this.state.saved){
         if(!window.confirm("Você ainda não salvou os dados atuais, deseja sobreescrevelos com o arquivo sendo carregado?")){
