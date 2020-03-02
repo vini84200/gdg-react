@@ -9,31 +9,25 @@ import Numero from './Numero';
 import Ementa from './Ementa';
 import Corpo from './Corpo';
 import Assinatura from '../documento/Assinatura';
+import Data, {getDataDefault} from '../documento/Data';
 
 const APP = 'gdg-gremio';
-const API_VERSION = '0.2';
+const API_VERSION = '0.3';
 
 class MocaoPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
             num: undefined,
-            year: 2020,
+            year: (new Date()).getFullYear(),
             ementa: '',
             corpo: [
                 {
                     number: 1,
-                    text: 'São coisas possiveis:',
-                    items: [
-                        {
-                            number: 1,
-                            text: 'Que as pessoas gostem desse site.',
-                        },
-                        { number: 2, text: 'Que as pessoas odeiem esse site.' },
-                    ],
+                    text: '',
                 },
             ],
-            data: {},
+            data: getDataDefault(),
             assinatura: {
               nome: "",
               cargo: ""
@@ -99,8 +93,6 @@ class MocaoPage extends Component {
       reader.readAsText(file);
 
     }
-
-
 
     onJsonLoad(data) {
       console.log(data);
@@ -218,7 +210,9 @@ class MocaoPage extends Component {
                                 this.add_artigo();
                             }}
                         />
+                        <Data data = {this.state.data} onChangeData={()=>{}} />
                         <h3> Assinaturas </h3>
+
                         <Assinatura assinatura={this.state.assinatura} extra="Proponente" onChange={(ass)=>{this.setState({assinatura: ass})}} />
 
                     </Content>

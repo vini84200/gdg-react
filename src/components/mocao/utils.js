@@ -50,3 +50,7 @@ export const download = (content, fileName, contentType) => {
 export const downloadJSON = (data, fileName) => {
  download(JSON.stringify(data), fileName, "text/plain");
 }
+
+export const convertMes = (num) => {
+  return 'Fevereiro'
+}
