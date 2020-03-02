@@ -211,7 +211,6 @@ class MocaoPage extends Component {
                             }}
                         />
                         <Data data = {this.state.data} onChangeData={()=>{}} />
-                        <h3> Assinaturas </h3>
 
                         <Assinatura assinatura={this.state.assinatura} extra="Proponente" onChange={(ass)=>{this.setState({assinatura: ass})}} />
 
