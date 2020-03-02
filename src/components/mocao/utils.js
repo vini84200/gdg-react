@@ -52,5 +52,8 @@ export const downloadJSON = (data, fileName) => {
 }
 
 export const convertMes = (num) => {
-  return 'Fevereiro'
+  const monthNames = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
+    "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
+  ];
+  return monthNames[num-1]
 }
