@@ -1,6 +1,7 @@
 import {makeAndOpenDocument, getBase64ImageFromURL} from '../documento/MakePDF.js'
 import {romanize} from './utils'
 import { renderArtigoPDF } from './Artigo'
+import { renderAssinaturaPDF} from '../documento/Assinatura'
 
 
 export default async resolucao => {
@@ -27,6 +28,7 @@ export default async resolucao => {
                 },
                 margin: [20, 30, 0, 0],
             },
+            renderAssinaturaPDF(resolucao.assinatura, 'Proponente')
         ]
     };
     makeAndOpenDocument(documentDefinition);

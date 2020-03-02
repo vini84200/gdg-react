@@ -8,9 +8,10 @@ import {downloadJSON} from './utils'
 import Numero from './Numero';
 import Ementa from './Ementa';
 import Corpo from './Corpo';
+import Assinatura from '../documento/Assinatura';
 
 const APP = 'gdg-gremio';
-const API_VERSION = '0.1';
+const API_VERSION = '0.2';
 
 class MocaoPage extends Component {
     constructor(props) {
@@ -33,7 +34,10 @@ class MocaoPage extends Component {
                 },
             ],
             data: {},
-            assinaturas: [],
+            assinatura: {
+              nome: "",
+              cargo: ""
+            },
             saved: true,
 
         };
@@ -213,6 +217,9 @@ class MocaoPage extends Component {
                                 this.add_artigo();
                             }}
                         />
+                        <h3> Assinaturas </h3>
+                        <Assinatura assinatura={this.state.assinatura} extra="Proponente" onChange={(ass)=>{this.setState({assinatura: ass})}} />
+
                     </Content>
                     <Message>{JSON.stringify({ ...this.state })}</Message>
                 </Container>
