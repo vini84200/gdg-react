@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Container, Content, Message, Button, Icon, File } from 'rbx';
+import { Container, Content, Message, Button, Icon, File, Column } from 'rbx';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import MakePDF from './MakePDF';
@@ -142,7 +142,7 @@ class MocaoPage extends Component {
 
     render() {
         return (
-            <Fragment>
+            <Column>
                 <Container>
                     <Content>
                         <h1>Criar uma Resolução</h1>
@@ -219,7 +219,7 @@ class MocaoPage extends Component {
                     </Content>
                     <Message>{JSON.stringify({ ...this.state })}</Message>
                 </Container>
-            </Fragment>
+            </Column>
         );
     }
 }
