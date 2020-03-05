@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Item from './Item';
 import StaticInput from '../StaticInput';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Input, Field, Control, Label, Help, Column, Button, Icon } from 'rbx';
+import { Input, Field, Column, Button, Icon } from 'rbx';
 
 import {renderItemPDF}  from './Item'
 

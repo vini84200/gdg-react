@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
 
 class StaticInput extends React.Component {
     constructor(props) {

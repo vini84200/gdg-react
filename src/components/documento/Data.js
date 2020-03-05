@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Input, Field, Control, Column } from 'rbx';
+import { Input, Control, Column } from 'rbx';
 import StaticInput from '../StaticInput';
 import {convertMes} from '../mocao/utils'
 

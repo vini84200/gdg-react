@@ -1,20 +1,13 @@
 import React, { Component, Fragment } from 'react';
 import { Container, Content, Column, Card, Title } from 'rbx';
-import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import {
   Link
 } from "react-router-dom";
 
-const APP = 'gdg-gremio';
-const API_VERSION = '0.3';
-
 
 class MocaoPage extends Component {
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         return (

@@ -1,6 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { Input, Field, Control, Help } from 'rbx';
+import { Input, Field, Control } from 'rbx';
 import StaticInput from '../StaticInput';
 
 const getTitle = (type) => {

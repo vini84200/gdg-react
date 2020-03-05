@@ -1,6 +1,5 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { Container, Content, Message, Button, Icon, File, Column } from 'rbx';
-import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import MakePDF from './MakePDF';
 import {downloadJSON} from './utils'

@@ -1,9 +1,8 @@
-import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 import { Column, Textarea } from 'rbx';
 import StaticInput from '../StaticInput';
 
-import { Input, Field, Control, Label, Help } from 'rbx';
+import { Input, Field } from 'rbx';
 
 class Ementa extends React.Component {
 

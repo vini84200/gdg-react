@@ -1,5 +1,4 @@
-import {makeAndOpenDocument, getBase64ImageFromURL} from '../documento/MakePDF.js'
-import {romanize} from './utils'
+import {makeAndOpenDocument} from '../documento/MakePDF.js'
 import { renderArtigoPDF } from './Artigo'
 import { renderAssinaturaPDF} from '../documento/Assinatura'
 import { renderDataPDF} from '../documento/Data'

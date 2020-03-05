@@ -37,7 +37,7 @@ export const makeDefaultDD = async () => {
           ],
       },
       footer: function(currentPage, pageCount) {
-        if (pageCount == 1){
+        if (pageCount === 1){
           return "";
         }
         return {text: `PÁGINA ${currentPage} DE ${pageCount}`, alignment: 'right', margin: [60, 0, 60, 20]}
@@ -55,7 +55,7 @@ export const makeDocument = async (documentDefinition) => {
   const { vfs } = vfsFonts.pdfMake;
   pdfMake.vfs = vfs;
   const dd = {
-    ... await makeDefaultDD(),
+    ...await makeDefaultDD(),
     ...documentDefinition
   }
   return pdfMake.createPdf(dd);

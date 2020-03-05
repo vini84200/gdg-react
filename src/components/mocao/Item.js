@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Input, Field, Control, Label, Help, Column } from 'rbx';
+import { Input, Field, Column } from 'rbx';
 import StaticInput from '../StaticInput';
 import {romanize} from './utils'
 
