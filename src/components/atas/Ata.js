@@ -15,6 +15,7 @@ class MocaoPage extends Component {
         this.state = {
             number: undefined,
             year: (new Date()).getFullYear(),
+            title: "",
             assinatura: {
               nome: "",
               cargo: ""
@@ -89,6 +90,7 @@ class MocaoPage extends Component {
                       <Numero
                       num={this.state.number}
                       year={this.state.year}
+                      title={this.state.title}
                       change_num= {(num) => {
                         this.setState({
                         number: num,
@@ -99,6 +101,12 @@ class MocaoPage extends Component {
                         this.setState({
                         year: year,
                         saved: false
+                        })
+                      }}
+                      change_title= {(title) => {
+                        this.setState({
+                          title: title,
+                          saved: false
                         })
                       }}
                       />

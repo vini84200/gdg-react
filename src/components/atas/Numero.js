@@ -40,6 +40,14 @@ class Numero extends React.Component {
                     onChange={e => this.props.change_year(e.target.value)}>
                     </StaticInput>
                 </Control>
+                <span style={{height: "24px", padding:"5px" }}> - </span>
+                <Control>
+                    <StaticInput
+                    child={Input}
+                    value={this.props.title}
+                    onChange={e => this.props.change_title(e.target.value)}>
+                    </StaticInput>
+                </Control>
             </Field>
             </Fragment>
         );
