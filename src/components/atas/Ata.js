@@ -3,6 +3,7 @@ import { Container, Content, Message, Button, Icon, File, Column } from 'rbx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {downloadJSON} from '../utils'
 
+import Numero from './Numero'
 import Assinatura from '../documento/Assinatura';
 
 const APP = 'gdg-gremio';
@@ -12,7 +13,8 @@ class MocaoPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            num: undefined,
+            number: undefined,
+            year: (new Date()).getFullYear(),
             assinatura: {
               nome: "",
               cargo: ""
@@ -21,15 +23,6 @@ class MocaoPage extends Component {
 
         };
     }
-
-    change_num(num) {
-        this.setState({
-            num: num,
-            saved: false,
-        });
-    }
-
-
 
     exportar_pdf() {
         MakePDF(this.state);
@@ -56,7 +49,7 @@ class MocaoPage extends Component {
       }
       if (data.type !== 'ata')
       {
-        alert("Erro! Esse arquivo não é uma proposta de Resolução ou uma Resolução. Ele é um(a) " + data.type);
+        alert("Erro! Esse arquivo não é uma Ata. Ele é um(a) " + data.type);
         return;
       }
       if (!this.state.saved){
@@ -93,7 +86,22 @@ class MocaoPage extends Component {
             <Column>
                 <Container>
                     <Content>
-
+                      <Numero
+                      num={this.state.number}
+                      year={this.state.year}
+                      change_num= {(num) => {
+                        this.setState({
+                        number: num,
+                        saved: false
+                        })
+                      }}
+                      change_year= {(year) => {
+                        this.setState({
+                        year: year,
+                        saved: false
+                        })
+                      }}
+                      />
                     </Content>
                     <Message>{JSON.stringify({ ...this.state })}</Message>
                 </Container>
