@@ -20,6 +20,7 @@ import {
 
 import Header from './components/Header';
 import MocaoPage from './components/mocao/MocaoPage';
+import Ata from './components/atas/Ata'
 import PaginaInicial from './components/PaginaInicial';
 
 library.add(fab, faCheckSquare, faCoffee, faList, faPlus, faFilePdf,faFileExport,faFileUpload);
@@ -32,6 +33,10 @@ function App() {
 
                 <Route path="/resolucao">
                   <MocaoPage />
+                </Route>
+
+                <Route path="/ata">
+                  <Ata />
                 </Route>
 
                 <Route path="/">

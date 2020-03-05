@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Container, Content, Message, Button, Icon, File, Column } from 'rbx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import MakePDF from './MakePDF';
-import {downloadJSON} from './utils'
+import {downloadJSON} from '../utils'
 
 import Numero from './Numero';
 import Ementa from './Ementa';
