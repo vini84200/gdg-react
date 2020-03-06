@@ -119,7 +119,7 @@ class MocaoPage extends Component {
                 onClick={() => {
                   downloadJSON(
                     this.exportar_dados(),
-                    `proposta mocao ${this.state.num} de ${this.state.year}.json`
+                    `ata ${this.state.number} de ${this.state.year}.json`
                   );
                 }}
               >
