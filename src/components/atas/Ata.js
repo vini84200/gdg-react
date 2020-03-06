@@ -227,6 +227,7 @@ const generatePDF = async ata => {
         margin: [10, 10, 0, 10],
         lineHeight: 1.5
       },
+
       renderAssinaturaPDF(ata.assinatura_secretario, "Secretário"),
       renderAssinaturaPDF(ata.assinatura_presidente, "Presidente")
     ]

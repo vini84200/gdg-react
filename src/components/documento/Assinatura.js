@@ -71,7 +71,8 @@ export const renderAssinaturaPDF = (assinatura, extra) => {
         { text: extra + ". " }
       ],
       alignment: "center",
-      marginTop: 50
+      marginTop: 50,
+      unbreakable: true
     }
   ];
 };
