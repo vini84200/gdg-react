@@ -3,3 +3,7 @@ export const livrosAta = [
 ];
 
 export const livroAtaDefault = livrosAta[0];
+
+export const getLivroAta = num => {
+  return livrosAta.find(livro => livro.cod == num);
+};

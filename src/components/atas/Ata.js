@@ -1,11 +1,14 @@
 import React, { Component } from "react";
 import { Container, Content, Message, Button, Icon, File, Column } from "rbx";
 import { downloadJSON } from "../utils";
-import { livroAtaDefault } from "../../config";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { livroAtaDefault, getLivroAta } from "../../config";
+import { makeAndOpenDocument } from "../documento/MakePDF.js";
 
 import Numero from "./Numero";
 import Livro from "./Livro";
-import Assinatura from "../documento/Assinatura";
+import Corpo from "./Corpo";
+import Assinatura, { renderAssinaturaPDF } from "../documento/Assinatura";
 
 const APP = "gdg-gremio";
 const API_VERSION = "0.1";
@@ -17,17 +20,22 @@ class MocaoPage extends Component {
       number: undefined,
       year: new Date().getFullYear(),
       title: "",
-      assinatura: {
+      livro: livroAtaDefault.cod,
+      corpo: "",
+      assinatura_secretario: {
         nome: "",
         cargo: ""
       },
-      livro: livroAtaDefault.cod,
+      assinatura_presidente: {
+        nome: "",
+        cargo: ""
+      },
       saved: true
     };
   }
 
   exportar_pdf() {
-    MakePDF(this.state);
+    generatePDF(this.state);
   }
 
   onJsonUploadChange(e) {
@@ -92,6 +100,55 @@ class MocaoPage extends Component {
       <Column>
         <Container>
           <Content>
+            <h1>Criar uma Ata</h1>
+
+            <Button.Group>
+              <Button
+                color="info"
+                onClick={() => {
+                  this.exportar_pdf();
+                }}
+              >
+                <Icon size="small">
+                  <FontAwesomeIcon icon="file-pdf" />
+                </Icon>
+                <span>Exportar PDF</span>
+              </Button>
+              <Button
+                color="info"
+                onClick={() => {
+                  downloadJSON(
+                    this.exportar_dados(),
+                    `proposta mocao ${this.state.num} de ${this.state.year}.json`
+                  );
+                }}
+              >
+                <Icon size="small">
+                  <FontAwesomeIcon icon="file-export" />
+                </Icon>
+                <span>Exportar JSON</span>
+              </Button>
+              <File>
+                <File.Label>
+                  <File.Input
+                    ref={ref => {
+                      this.uploadJSONInput = ref;
+                    }}
+                    onChange={e => {
+                      this.onJsonUploadChange(e);
+                    }}
+                    accept=".json, application/json"
+                  />
+                  <Button color="info" as="div">
+                    <Icon size="small">
+                      <FontAwesomeIcon icon="file-upload" />
+                    </Icon>
+                    <span>Importar JSON</span>
+                  </Button>
+                </File.Label>
+              </File>
+            </Button.Group>
+
             <Numero
               num={this.state.number}
               year={this.state.year}
@@ -124,6 +181,26 @@ class MocaoPage extends Component {
                 });
               }}
             />
+            <Corpo
+              corpo={this.state.corpo}
+              change={value => {
+                this.setState({ corpo: value, saved: false });
+              }}
+            />
+            <Assinatura
+              assinatura={this.state.assinatura_secretario}
+              extra={"Secretário"}
+              onChange={ass => {
+                this.setState({ assinatura_secretario: ass });
+              }}
+            />
+            <Assinatura
+              assinatura={this.state.assinatura_presidente}
+              extra={"Presidente"}
+              onChange={ass => {
+                this.setState({ assinatura_presidente: ass });
+              }}
+            />
           </Content>
           <Message>{JSON.stringify({ ...this.state })}</Message>
         </Container>
@@ -133,4 +210,26 @@ class MocaoPage extends Component {
 }
 export default MocaoPage;
 
-const MakePDF = () => {};
+const generatePDF = async ata => {
+  const documentDefinition = {
+    content: [
+      {
+        text: `ATA Nº ${ata.number}/${ata.year} - ${ata.title}`,
+        bold: true
+      },
+      {
+        text: `Registrada no livro ${getLivroAta(ata.livro).title}`,
+        bold: true
+      },
+      {
+        text: ata.corpo.replace(/\r?\n|\r/g, " "),
+        alignment: "justify",
+        margin: [10, 10, 0, 10],
+        lineHeight: 1.5
+      },
+      renderAssinaturaPDF(ata.assinatura_secretario, "Secretário"),
+      renderAssinaturaPDF(ata.assinatura_presidente, "Presidente")
+    ]
+  };
+  makeAndOpenDocument(documentDefinition);
+};
