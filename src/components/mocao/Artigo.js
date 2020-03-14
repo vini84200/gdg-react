@@ -3,7 +3,16 @@ import PropTypes from "prop-types";
 import Item from "./Item";
 import StaticInput from "../StaticInput";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Input, Field, Column, Button, Icon, Level } from "rbx";
+import {
+  Input,
+  Field,
+  Column,
+  Button,
+  Control,
+  Icon,
+  Level,
+  Dropdown
+} from "rbx";
 
 import { renderItemPDF } from "./Item";
 
@@ -94,7 +103,9 @@ class Artigo extends React.Component {
     });
   }
 
-  delete() {}
+  delete() {
+    this.props.delete_artigo(this.props.index);
+  }
 
   render() {
     const items =
@@ -109,7 +120,7 @@ class Artigo extends React.Component {
             <strong>{this.getCalling()}</strong>
           </Column>
           <Column>
-            <Field>
+            <Field kind="addons">
               <StaticInput
                 child={Input}
                 value={this.props.artigo ? this.props.artigo.text : ""}
@@ -117,6 +128,43 @@ class Artigo extends React.Component {
                 onClick={() => this.handleClick()}
                 placeholder="Clique aqui para adicionar um novo artigo."
               />
+              {!this.props.artigo.phantom && (
+                <Control>
+                  <Dropdown align="right">
+                    <Dropdown.Trigger>
+                      <Button color="info">
+                        <Icon size="small">
+                          <FontAwesomeIcon icon="plus" />
+                        </Icon>
+                      </Button>
+                    </Dropdown.Trigger>
+                    <Dropdown.Menu>
+                      <Dropdown.Content>
+                        <Dropdown.Item onClick={() => this.add_item()}>
+                          <Icon size="small">
+                            <FontAwesomeIcon icon="plus" />
+                          </Icon>
+                          <span>Inciso</span>
+                        </Dropdown.Item>
+                      </Dropdown.Content>
+                    </Dropdown.Menu>
+                  </Dropdown>
+                </Control>
+              )}
+              {!this.props.artigo.phantom && (
+                <Control>
+                  <Button
+                    color="danger"
+                    onClick={() => {
+                      this.delete();
+                    }}
+                  >
+                    <Icon size="small">
+                      <FontAwesomeIcon icon="trash-alt" />
+                    </Icon>
+                  </Button>
+                </Control>
+              )}
             </Field>
 
             {items.map((item, id) => (
@@ -126,35 +174,6 @@ class Artigo extends React.Component {
                 onChange={item => this.change_item(item, id)}
               />
             ))}
-          </Column>
-          <Column>
-            <Button.Group hasAddons>
-              {!this.props.artigo.items && !this.props.artigo.phantom && (
-                <Button
-                  color="info"
-                  onClick={() => {
-                    this.add_item();
-                  }}
-                >
-                  <Icon size="small">
-                    <FontAwesomeIcon icon="plus" />
-                  </Icon>
-                  <span>I.</span>
-                </Button>
-              )}
-              {!this.props.artigo.phantom && (
-                <Button
-                  color="danger"
-                  onClick={() => {
-                    this.delete();
-                  }}
-                >
-                  <Icon size="small">
-                    <FontAwesomeIcon icon="trash-alt" />
-                  </Icon>
-                </Button>
-              )}
-            </Button.Group>
           </Column>
         </Column.Group>
       </div>

@@ -81,6 +81,16 @@ class MocaoPage extends Component {
     });
   }
 
+  delete_artigo(id) {
+    console.log(`Removendo o id ${id}`);
+    const artigos = [...this.state.corpo];
+    artigos.splice(id, 1);
+    this.setState({
+      corpo: artigos,
+      saved: false
+    });
+  }
+
   exportar_pdf() {
     MakePDF(this.state);
   }
@@ -222,6 +232,7 @@ class MocaoPage extends Component {
               add_artigo={() => {
                 this.add_artigo();
               }}
+              delete_artigo={id => this.delete_artigo(id)}
             />
             <Data data={this.state.data} onChangeData={() => {}} />
 
