@@ -29,8 +29,8 @@ class MocaoPage extends Component {
                       <p>
                         Uma resolucao é um decisão oficial do grêmio, que
                         detalha alguma ação do grêmio. Resoluções devem ser
-                        apresentadas nas reuniões do grêmio, e só poderão ser
-                        aprovadas em uma reunião.
+                        apresentadas nas reuniões do grêmio como um projeto de
+                        resolução, e só poderão ser aprovadas em uma reunião.
                       </p>
                     </Link>
                   </Card.Content>

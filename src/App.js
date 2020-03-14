@@ -9,7 +9,8 @@ import {
   faFilePdf,
   faFileExport,
   faFileUpload,
-  faList
+  faList,
+  faTrashAlt
 } from "@fortawesome/free-solid-svg-icons";
 
 import { HashRouter as Router, Switch, Route } from "react-router-dom";
@@ -27,7 +28,8 @@ library.add(
   faPlus,
   faFilePdf,
   faFileExport,
-  faFileUpload
+  faFileUpload,
+  faTrashAlt
 );
 function App() {
   return (
