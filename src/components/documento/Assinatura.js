@@ -66,7 +66,7 @@ export const renderAssinaturaPDF = (assinatura, extra) => {
   return [
     {
       stack: [
-        { text: assinatura.nome + ", ", bold: true },
+        { text: assinatura.nome.toUpperCase() + ", ", bold: true },
         assinatura.cargo && { text: assinatura.cargo + ", " },
         { text: extra + ". " }
       ],
