@@ -16,6 +16,8 @@
     "pdfmake": "^0.1.64",
     "prettier": "^1.19.1",
     "prop-types": "^15.7.2",
+    "pug": "^3.0.0",
+    "pug-cli": "^1.0.0-alpha6",
     "rbx": "^2.2.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
