@@ -1,18 +1,20 @@
 import React from "react";
+import { jsPDF } from "jspdf";
 
-import { useTemplate } from "../../hooks/generate_pdf";
+import { useTemplate, usePDF } from "../../hooks/generate_pdf";
 import template from "../../templates/pug/base.pug";
-//template = require("../../templates/pug/base.pug").default;
-//const template = require("../../templates/public/base");
 
 export default function Branco() {
-  const templater = useTemplate(template, {
-    author: "John",
+  const { generateAndOpen, html, loading } = usePDF(template, {
+    author: "Peter",
   });
   return (
     <div>
-      <button type="button">Gerrar PDF!</button>
-      {templater}
+      <button type="button" onClick={generateAndOpen}>
+        Gerrar PDF!
+      </button>
+      {html}
+      {loading}
     </div>
   );
 }
