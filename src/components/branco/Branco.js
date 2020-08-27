@@ -2,14 +2,30 @@ import React from "react";
 import { jsPDF } from "jspdf";
 
 import { useTemplate, usePDF } from "../../hooks/generate_pdf";
-import template from "../../templates/pug/base.pug";
+import { useFormik } from "formik";
 
 export default function Branco() {
-  const { generateAndOpen, html, loading } = usePDF(template, {
-    author: "Peter",
+  const formik = useFormik({
+    initialValues: {
+      author: "peter",
+    },
+    onSubmit: () => {},
+  });
+  const { generateAndOpen, html, loading } = usePDF("base", {
+    author: formik.values.author,
   });
   return (
     <div>
+      <form>
+        <input
+          type="text"
+          name="author"
+          value={formik.values.author}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+        />
+      </form>
+
       <button type="button" onClick={generateAndOpen}>
         Gerrar PDF!
       </button>

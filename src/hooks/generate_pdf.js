@@ -3,6 +3,8 @@ import { jsPDF } from "jspdf";
 
 import pug from "pug";
 
+const BASEDIR = process.env.PUBLIC_URL + "/pug_templates/";
+
 export function useTemplate(templateStr, locals, loading = "") {
   const [result, setResult] = useState(loading);
   const [isLoading, setLoading] = useState(true);
@@ -11,10 +13,22 @@ export function useTemplate(templateStr, locals, loading = "") {
 
   useEffect(() => {
     setLoading(true);
-    fetch(templateStr).then((data) => {
+    fetch(BASEDIR + templateStr + ".pug").then((data) => {
       data.text().then((data) => {
         console.log("Got new templater");
-        setTemplater(() => pug.compile(data));
+        setTemplater(() => {
+          return pug.compile(data, {
+            basedir: BASEDIR,
+            plugins: [
+              {
+                read: (filename, options) => {
+                  console.log("Reading file", filename);
+                  return "peter parker";
+                },
+              },
+            ],
+          });
+        });
         setLoading(false);
       });
     });
