@@ -12,6 +12,7 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "husky": "^4.2.3",
+    "jspdf": "^2.1.0",
     "lint-staged": "^10.0.7",
     "pdfmake": "^0.1.64",
     "prettier": "^1.19.1",
