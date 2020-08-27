@@ -10,7 +10,7 @@ import {
   faFileExport,
   faFileUpload,
   faList,
-  faTrashAlt
+  faTrashAlt,
 } from "@fortawesome/free-solid-svg-icons";
 
 import { HashRouter as Router, Switch, Route } from "react-router-dom";
@@ -19,6 +19,7 @@ import Header from "./components/Header";
 import MocaoPage from "./components/mocao/MocaoPage";
 import Ata from "./components/atas/Ata";
 import PaginaInicial from "./components/PaginaInicial";
+import Branco from "./components/branco/Branco";
 
 library.add(
   fab,
@@ -43,6 +44,10 @@ function App() {
 
           <Route path="/ata">
             <Ata />
+          </Route>
+
+          <Route path="/branco">
+            <Branco />
           </Route>
 
           <Route path="/">
