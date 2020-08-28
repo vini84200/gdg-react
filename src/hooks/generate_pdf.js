@@ -3,7 +3,57 @@ import { jsPDF } from "jspdf";
 
 import pug from "pug";
 
-const BASEDIR = process.env.PUBLIC_URL + "/pug_templates/";
+const BASEDIR = process.env.PUBLIC_URL + "/pug_templates";
+
+var cache = {};
+var cached = false;
+var cachePromises = [];
+const cache_files = ["/base.pug", "/print.css"];
+
+// FIXME: Will not work in slow connections
+
+cache_files.forEach((filepath) => {
+  console.log(new Promise(() => {}));
+  cache[filepath] = "::";
+  cachePromises.push(
+    new Promise((resolve) => {
+      fetch(BASEDIR + filepath)
+        .then((data) => {
+          return data.text();
+        })
+        .then((text) => {
+          cache[filepath] = text;
+          // cachePromises[filepath].resolve();
+          console.log("Cached", filepath);
+          resolve();
+          return text;
+        });
+    })
+  );
+});
+
+var allCache = Promise.all(cachePromises);
+allCache.then(() => (cached = true));
+allCache.then(() => console.log("Finished caching"));
+function getFile(file) {
+  if (cache[file]) {
+    return cache[file];
+  }
+  console.log(allCache, cachePromises, cached, cache);
+  throw Error("Not found in cache " + file);
+}
+
+async function getFileAsync(file) {
+  await cachePromises[file];
+
+  return cache[file];
+}
+
+async function runOnLoad(f) {
+  await allCache;
+  console.log("Should be OK");
+  f();
+}
 
 export function useTemplate(templateStr, locals, loading = "") {
   const [result, setResult] = useState(loading);
@@ -12,24 +62,25 @@ export function useTemplate(templateStr, locals, loading = "") {
   const [templater, setTemplater] = useState(() => () => "");
 
   useEffect(() => {
+    //BASEDIR + "/" + templateStr + ".pug"
     setLoading(true);
-    fetch(BASEDIR + templateStr + ".pug").then((data) => {
-      data.text().then((data) => {
-        console.log("Got new templater");
+    runOnLoad(() => {
+      setLoading(false);
+      getFileAsync(`/${templateStr}.pug`).then((file) => {
         setTemplater(() => {
-          return pug.compile(data, {
-            basedir: BASEDIR,
+          return pug.compile(file, {
+            basedir: "/",
+            cache: cache,
             plugins: [
               {
                 read: (filename, options) => {
                   console.log("Reading file", filename);
-                  return "peter parker";
+                  return getFile(filename);
                 },
               },
             ],
           });
         });
-        setLoading(false);
       });
     });
   }, [templateStr]);
