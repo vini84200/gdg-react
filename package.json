@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "express": "^4.16.2",
+    "html-pdf": "^2.2.0",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.4",
     "pug": "^3.0.0",
