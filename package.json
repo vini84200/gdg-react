@@ -12,7 +12,8 @@
     "morgan": "^1.10.0",
     "nodemon": "^2.0.4",
     "pug": "^3.0.0",
-    "pug-cli": "^1.0.0-alpha6"
+    "pug-cli": "^1.0.0-alpha6",
+    "puppeteer": "^5.2.1"
   },
   "devDependencies": {
     "concurrently": "^3.5.0"

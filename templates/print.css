@@ -12,7 +12,7 @@
   }
 
   /** Setting margins */
-  .page {
+  @page {
     margin: 2cm 3cm;
   }
 
