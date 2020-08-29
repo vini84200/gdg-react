@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { jsPDF } from "jspdf";
-
+import html2pdf from "html2pdf.js";
 import pug from "pug";
 
 const BASEDIR = process.env.PUBLIC_URL + "/pug_templates";
@@ -98,17 +98,25 @@ export function usePDF(templateStr, locals) {
 
   function generate(cb) {
     if (loading) return cb("Still Loading...");
-    const pdf = new jsPDF();
-    pdf.html(html).then(() => {
-      console.log("Gerrado");
-      cb(null, pdf);
-    });
+    // const pdf = new jsPDF();
+    // pdf.fromHTML(html).then(() => {
+    //   console.log("Gerrado");
+    //   cb(null, pdf);
+    // });
+    cb(
+      null,
+      html2pdf()
+        .from(html)
+        .toPdf()
+    );
   }
 
   function generateAndOpen() {
     generate((error, pdf) => {
       if (error) return console.log(error);
-      window.open(pdf.output("bloburi"), "_blank");
+      pdf.outputPdf("bloburi").then((uri) => {
+        window.open(uri, "_blank");
+      });
     });
   }
 
