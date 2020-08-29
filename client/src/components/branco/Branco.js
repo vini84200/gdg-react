@@ -1,7 +1,6 @@
 import React from "react";
-import { jsPDF } from "jspdf";
 
-import { useTemplate, usePDF } from "../../hooks/generate_pdf";
+import { usePDF } from "../../hooks/generate_pdf";
 import { useFormik } from "formik";
 
 export default function Branco() {
@@ -11,7 +10,7 @@ export default function Branco() {
     },
     onSubmit: () => {},
   });
-  const { generateAndOpen, html, loading } = usePDF("base", {
+  const { generateAndOpen } = usePDF("base", {
     author: formik.values.author,
   });
   return (
@@ -29,8 +28,6 @@ export default function Branco() {
       <button type="button" onClick={generateAndOpen}>
         Gerrar PDF!
       </button>
-      {html}
-      {loading}
     </div>
   );
 }
